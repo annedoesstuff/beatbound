@@ -1,5 +1,8 @@
 Links: [[_progress-kanban|TODO]]
 ***
+# 2024-12-04 
+Making Terrain Sets for Autotiling.
+
 # 2024-12-03
 ## TILEMAP & GRID
 Working on [[TILEMAP]] and [[GRID]]. Think i need two. One for visual and one for logic.

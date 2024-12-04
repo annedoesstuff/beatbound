@@ -218,10 +218,3 @@ func run_process():
 		count_sixteenth_beat += 1
 		if sixteenth_beats:
 			emit_signal("sixteenth_beat", count_sixteenth_beat, (count_sixteenth_beat-1) * (ms_between_beats/16.0) + begin_ms())
-
-
-
-
-
-
-
