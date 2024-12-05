@@ -2,6 +2,62 @@ Links: [[_progress-kanban|TODO]]
 ***
 # 2024-12-04 
 Making Terrain Sets for Autotiling.
+Set up Wall and Dirt Terrain Set for Autotiling. Works well enough. Will need to update all adjacent tiles when dirt is dug.
+Tile offset (`texture_origin.y`) for walls and dirt is 24. This makes the walls overlap at the top.
+
+**Next Problem:** when handling "walkable" and "diggable" in one logic layer. will need to update tiles in logic layer form dirt to floor if is dug.
+1. *Get the Tile's Data:* Use the `TileMap.get_cell_tile_data()` method to retrieve the tile's data:
+```python
+func is_walkable(position: Vector2) -> bool:
+    var cell_id = logic_layer.get_cell(position)
+    if cell_id == TileMap.INVALID_CELL:
+        return false
+    var tile_data = logic_layer.get_cell_tile_data(position)
+    return tile_data.get_custom_data("walkable")
+
+func is_diggable(position: Vector2) -> bool:
+    var cell_id = logic_layer.get_cell(position)
+    if cell_id == TileMap.INVALID_CELL:
+        return false
+    var tile_data = logic_layer.get_cell_tile_data(position)
+    return tile_data.get_custom_data("diggable")
+```
+2. *Replace Tile After Digging:* When a tile is dug, update the logic layer and visual layers:
+```python
+func dig_tile(position: Vector2):
+    if not is_diggable(position):
+        return
+
+    # Replace with a walkable floor tile in the logic layer
+    logic_layer.set_cell(position, FLOOR_TILE_ID)
+    
+    # Update visual layers (e.g., dirt layer becomes empty, ground layer shows floor)
+    visual_dirt_layer.set_cell(position, TileMap.INVALID_CELL)
+    visual_ground_layer.set_cell(position, FLOOR_TILE_ID)
+```
+*** 
+TODO:
+- Pathfinding (Update Navigation regions automatically):
+```python
+NavigationServer2D.map_set_cell(
+    navigation_map_id, position, NavigationServer2D.CELL_TYPE_WALKABLE
+)
+```
+- Particle Effects for digging
+***
+old:
+```python
+func dig_tile(position: Vector2):
+    # Replace the tile at the given position
+    logic_layer.set_cell(position, FLOOR_TILE_ID)  # Replace dirt with floor
+    
+    # Update the surrounding tiles to ensure transitions are correct
+    for neighbor_offset in [
+        Vector2(-1, 0), Vector2(1, 0), Vector2(0, -1), Vector2(0, 1)
+    ]:
+        var neighbor_pos = position + neighbor_offset
+        logic_layer.update_bitmask_area(Rect2(neighbor_pos, Vector2(1, 1)))
+```
 
 # 2024-12-03
 ## TILEMAP & GRID
