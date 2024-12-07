@@ -11,7 +11,8 @@ extends CharacterBody2D
 ########### [Game Functions] ############
 func _ready() -> void:
 	beat_keeper.play()
-	position.y = 50
+	#position.y = 180
+	#position.x = 320
 
 func _input(event: InputEvent) -> void:
 	if can_move:
