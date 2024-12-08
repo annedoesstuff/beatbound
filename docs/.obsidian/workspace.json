@@ -29,7 +29,6 @@
           {
             "id": "4a4752c640fda673",
             "type": "leaf",
-            "pinned": true,
             "state": {
               "type": "kanban",
               "state": {
@@ -43,7 +42,6 @@
                   ]
                 }
               },
-              "pinned": true,
               "icon": "lucide-trello",
               "title": "_progress-kanban"
             }
@@ -81,7 +79,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -224,10 +222,11 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "ebb676b557dd8b64",
+  "active": "4a4752c640fda673",
   "lastOpenFiles": [
-    "_progress-kanban.md",
+    "playground.canvas",
     "_log.md",
+    "_progress-kanban.md",
     "Untitled Kanban.md",
     "_assets/tile-overlap-screen.png",
     "LEVEL.md",
@@ -235,7 +234,6 @@
     "_overview.md",
     "__MTG-Arena-Draft.md",
     "PLAYER.md",
-    "playground.canvas",
     "VFX.md",
     "ENEMIES.md",
     "GOAL.md",

@@ -1,5 +1,11 @@
 Links: [[_progress-kanban|TODO]]
 ***
+# 2024-12-07
+Grace period for beat and input. Want to kill myself :)
+
+Don't think I need timer. Just use `_last_beat_time` to calculate if its in grace window. `_last_beat_time` updates every beat. OR NOT 🫠👍
+
+
 # 2024-12-04 
 Making Terrain Sets for Autotiling.
 Set up Wall and Dirt Terrain Set for Autotiling. Works well enough. Will need to update all adjacent tiles when dirt is dug.

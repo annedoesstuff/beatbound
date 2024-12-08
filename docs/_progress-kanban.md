@@ -6,23 +6,27 @@ kanban-plugin: board
 
 ## todo
 
-- [ ] TILEMAP - Wall
-	- [ ] Autotile Wall
-	- [ ] Placement
-	- [ ] (Hight cast shadow)
-- [ ] TILEMAP - Logic Layer
-	- [ ] Placement grid
-	- [ ] dig logic
+- [ ] BEAT - Movement
+	- [ ] Grace Window
+	- [ ] on beat grid movent
+	>navigation/data layer?
 - [ ] TILEMAP - Floor
 	- [ ] scattering for floor details
-- [ ] TILEMAP - Dirt
-	- [ ] Autotile Dirt
-	- [ ] Placement
 - [ ] TILEMAP - Occlusion
 
 
 ## started
 
+- [ ] TILEMAP - Dirt
+	- [x] Autotile Dirt
+	- [x] Placement
+- [ ] TILEMAP - Logic Layer
+	- [x] Placement grid
+	- [ ] dig logic
+- [ ] TILEMAP - Wall
+	- [x] Autotile Wall
+	- [x] Placement
+	- [ ] (Hight cast shadow)
 
 
 ## done
