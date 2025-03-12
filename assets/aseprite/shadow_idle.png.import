@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deso6rsaj6jku"
-path="res://.godot/imported/bluelink_idle.png-3f310a71bad2284334a6f7bba6b466d6.ctex"
+uid="uid://cfy7dhl5wu0lm"
+path="res://.godot/imported/shadow_idle.png-3e8a1c2ce0d96cfe6c83e39b1155c2df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/CadencesOfHyrule/bluelink/bluelink_idle.png"
-dest_files=["res://.godot/imported/bluelink_idle.png-3f310a71bad2284334a6f7bba6b466d6.ctex"]
+source_file="res://assets/aseprite/shadow_idle.png"
+dest_files=["res://.godot/imported/shadow_idle.png-3e8a1c2ce0d96cfe6c83e39b1155c2df.ctex"]
 
 [params]
 

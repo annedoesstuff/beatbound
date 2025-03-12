@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbgsg056tnn44"
-path="res://.godot/imported/beat.png-5188d1cb839b5baacb768fb4c26160a2.ctex"
+uid="uid://eih1dgc6kdgm"
+path="res://.godot/imported/orb_flame_red.png-f24bd48e07c942c6cb0e6635e5163bf6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite/UI/beat.png"
-dest_files=["res://.godot/imported/beat.png-5188d1cb839b5baacb768fb4c26160a2.ctex"]
+source_file="res://assets/aseprite/UI/orb_flame_red.png"
+dest_files=["res://.godot/imported/orb_flame_red.png-f24bd48e07c942c6cb0e6635e5163bf6.ctex"]
 
 [params]
 

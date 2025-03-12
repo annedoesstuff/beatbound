@@ -27,26 +27,6 @@
             }
           },
           {
-            "id": "4a4752c640fda673",
-            "type": "leaf",
-            "state": {
-              "type": "kanban",
-              "state": {
-                "file": "_progress-kanban.md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": [
-                    false,
-                    false,
-                    false
-                  ]
-                }
-              },
-              "icon": "lucide-trello",
-              "title": "_progress-kanban"
-            }
-          },
-          {
             "id": "ebb676b557dd8b64",
             "type": "leaf",
             "pinned": true,
@@ -63,23 +43,21 @@
             }
           },
           {
-            "id": "9a22b3bfbca50ca5",
+            "id": "bfb2bee67e1caee8",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Untitled Kanban.md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": []
-                }
+                "file": "_log.md",
+                "mode": "source",
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "Plugin no longer active"
+              "title": "_log"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -98,7 +76,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -222,10 +201,23 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "4a4752c640fda673",
+  "active": "bfb2bee67e1caee8",
   "lastOpenFiles": [
     "playground.canvas",
     "_log.md",
+    "Pasted image 20250211221857.png",
+    "Pasted image 20250211204826.png",
+    "Pasted image 20250211171609.png",
+    "Pasted image 20250211164719.png",
+    "Pasted image 20250211164654.png",
+    "Pasted image 20250211152330.png",
+    "Schwerpunkte fuer die muendliche Modulpruefung_page-0001.jpg",
+    "__RTOS/RTOS-Klausurschwerpunkte.md",
+    "Schwerpunkte fuer die muendliche Modulpruefung 1.pdf",
+    "__RTOS/RTOS-KLAUSUR-SCHWERPUNKTE.canvas",
+    "__RTOS",
+    "Untitled.md",
+    "Schwerpunkte fuer die muendliche Modulpruefung.pdf",
     "_progress-kanban.md",
     "Untitled Kanban.md",
     "_assets/tile-overlap-screen.png",
@@ -244,10 +236,6 @@
     "_chatGPT/notes.md",
     "_assets/octopath-attack-fx-5.jpg",
     "_assets/octopath-attack-fx.jpg",
-    "_assets/octopath-attack-fx-4.jpg",
-    "_assets/cotn-screen03.webp",
-    "_assets/coh-screen02.jpg",
-    "_assets/cotn-screen05.jpg",
     "_assets",
     "Welcome.md",
     "_chatGPT",

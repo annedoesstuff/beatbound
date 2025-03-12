@@ -1,5 +1,8 @@
 Links: [[_progress-kanban|TODO]]
 ***
+# 2025-03-04 
+Player movement loop using `_process()`. Only happen when `can_move == true`. _process()_ checks every frame. `Input.is_action_just_pressed()` -> Triggers only once per key press.
+
 # 2024-12-07
 Grace period for beat and input. Want to kill myself :)
 

@@ -1,69 +1,52 @@
 extends CharacterBody2D
 
+@export var can_move = false
+
 @export var tile_size = 32
-#@export var can_move = false
-#@export var beat_window = 0.2 # how long until beat expires
-var last_beat_time: float = 0.0
-var grace_window: float = 200 # in ms (this ± beat_window -> can_move = true)
+var beat_window: float = 0.2 # in ms (this ± beat_window -> can_move = true)
+var move_direction = Vector2.ZERO
 
 @onready var beat_keeper = $"../BeatKeeper"
-#@onready var beat_timer = $"../BeatTimer"
-
+@onready var tile_map = $"../TilemapLayer_Logic"
+@onready var player_sprite = $PlayerAnimatedSprite
 
 ########### [Game Functions] ############
 func _ready() -> void:
 	beat_keeper.play()
+	player_sprite.play("default")
 
-func _input(event: InputEvent) -> void:
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_right"):
+		print("moveing right")
+		move(Vector2.RIGHT)
+	elif Input.is_action_just_pressed("ui_left"):
+		move(Vector2.LEFT)
+	elif Input.is_action_just_pressed("ui_up"):
+		move(Vector2.UP)
+	elif Input.is_action_just_pressed("ui_down"):
+		move(Vector2.DOWN)
 	
-	'''
-	if !can_move:
-		print("--BEAT MISSED---")
-		return
-	'''
-	
-	#if can_move && (Input.is_action_pressed("ui_right") || Input.is_action_pressed("ui_left") || Input.is_action_pressed("ui_up") || Input.is_action_pressed("ui_down")):
-	if is_within_grace_window() && (Input.is_action_pressed("ui_right") || Input.is_action_pressed("ui_left") || Input.is_action_pressed("ui_up") || Input.is_action_pressed("ui_down")):
-		if Input.is_action_pressed("ui_right"):
-			move(Vector2.RIGHT)
-		if Input.is_action_pressed("ui_left"):
-			move(Vector2.LEFT)
-		if Input.is_action_pressed("ui_up"):
-			move(Vector2.UP)
-		if Input.is_action_pressed("ui_down"):
-			move(Vector2.DOWN)
-	else :
-		print("--missed beat--")
-	'''
-	if can_move:
-		velocity = Vector2.ZERO
-		if Input.is_action_pressed("ui_right"):
-			velocity.x = tile_size
-			print("GO RIGHT ->")
-		else:
-			velocity = Vector2.ZERO
-			print("MISSED")
-		
-		set_velocity(velocity)
-		move_and_slide()
-	'''
-	
-########### [Other] ####################
+########### [MOVE] ####################
 func move(direction:Vector2):
-	print(direction)
-
-########### [Beat] ####################
-func is_within_grace_window() -> bool:
-	return abs(Time.get_ticks_msec() - last_beat_time) <= grace_window
-
-func _on_beat_keeper_whole_beat(number: Variant, exact_msec: Variant) -> void:
-	last_beat_time = exact_msec
-	print("Beat!")
-	'''
-	can_move = true
-	beat_timer.start(beat_window)
+	# get tiles
+	var current_tile: Vector2i = tile_map.local_to_map(global_position)
+	var target_tile: Vector2i = Vector2i(
+		current_tile.x + direction.x, 
+		current_tile.y + direction.y,
+	)
+	# get custom data layer (walkable - layer 0) from target tile
+	var tile_data: TileData = tile_map.get_cell_tile_data(target_tile)
+	
+	if tile_data.get_custom_data("walkable") == false:
+		print("cannot move there")
+		return
+	# move player
+	global_position = tile_map.map_to_local(target_tile)
+	
 	
 
-func _on_beat_timer_timeout() -> void:
-	can_move = false
-'''
+########### [BeatKeeper] ####################
+func _on_beat_keeper_whole_beat(number: Variant, exact_msec: Variant) -> void:
+	print("Beat!")
+	
+	

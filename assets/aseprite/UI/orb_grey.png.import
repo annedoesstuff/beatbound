@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbgsg056tnn44"
-path="res://.godot/imported/beat.png-5188d1cb839b5baacb768fb4c26160a2.ctex"
+uid="uid://eit11jy3f34i"
+path="res://.godot/imported/orb_grey.png-ed8abfa74bd67ec9aa75f43e73b9c24e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite/UI/beat.png"
-dest_files=["res://.godot/imported/beat.png-5188d1cb839b5baacb768fb4c26160a2.ctex"]
+source_file="res://assets/aseprite/UI/orb_grey.png"
+dest_files=["res://.godot/imported/orb_grey.png-ed8abfa74bd67ec9aa75f43e73b9c24e.ctex"]
 
 [params]
 
