@@ -13,7 +13,7 @@ var move_direction = Vector2.ZERO
 ########### [Game Functions] ############
 func _ready() -> void:
 	beat_keeper.play()
-	player_sprite.play("default")
+	player_sprite.play("idle_down")
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_right"):
