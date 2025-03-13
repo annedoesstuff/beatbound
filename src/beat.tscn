@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://3ymsx2yyv8of"]
+
+[ext_resource type="Texture2D" uid="uid://r573ajm1ekvj" path="res://assets/aseprite/UI/beat.png" id="1_80sbg"]
+[ext_resource type="Script" path="res://src/beat.gd" id="2_ypln2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0ock"]
+size = Vector2(6, 14)
+
+[node name="Beat" type="Sprite2D"]
+texture = ExtResource("1_80sbg")
+script = ExtResource("2_ypln2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_r0ock")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
