@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://eit11jy3f34i"
-path="res://.godot/imported/orb_grey.png-ed8abfa74bd67ec9aa75f43e73b9c24e.ctex"
+uid="uid://cepusidpswm8d"
+path="res://.godot/imported/treadmill.png-f882960db95fce5f6c6771a0de627101.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite/UI/orb_grey.png"
-dest_files=["res://.godot/imported/orb_grey.png-ed8abfa74bd67ec9aa75f43e73b9c24e.ctex"]
+source_file="res://assets/aseprite/UI/treadmill.png"
+dest_files=["res://.godot/imported/treadmill.png-f882960db95fce5f6c6771a0de627101.ctex"]
 
 [params]
 

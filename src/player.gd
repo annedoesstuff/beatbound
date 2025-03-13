@@ -1,23 +1,20 @@
 extends CharacterBody2D
 
-@export var can_move = false
-
-@export var tile_size = 32
-var beat_window: float = 0.2 # in ms (this ± beat_window -> can_move = true)
-var move_direction = Vector2.ZERO
-
 @onready var beat_keeper = $"../BeatKeeper"
 @onready var tile_map = $"../TilemapLayer_Logic"
+ 
+
 @onready var player_sprite = $PlayerAnimatedSprite
+@onready var beat_orb = $Hud/Treadmill
 
 ########### [Game Functions] ############
 func _ready() -> void:
 	beat_keeper.play()
-	player_sprite.play("idle_down")
+	beat_orb.play("default")
+	#player_sprite.play("idle_down")
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_right"):
-		print("moveing right")
 		move(Vector2.RIGHT)
 	elif Input.is_action_just_pressed("ui_left"):
 		move(Vector2.LEFT)
@@ -25,9 +22,14 @@ func _process(delta: float) -> void:
 		move(Vector2.UP)
 	elif Input.is_action_just_pressed("ui_down"):
 		move(Vector2.DOWN)
+	else:
+		player_sprite.play("idle_down")
 	
 ########### [MOVE] ####################
 func move(direction:Vector2):
+	# animation
+	player_sprite.play("move_down")
+	
 	# get tiles
 	var current_tile: Vector2i = tile_map.local_to_map(global_position)
 	var target_tile: Vector2i = Vector2i(
@@ -42,7 +44,6 @@ func move(direction:Vector2):
 		return
 	# move player
 	global_position = tile_map.map_to_local(target_tile)
-	
 	
 
 ########### [BeatKeeper] ####################

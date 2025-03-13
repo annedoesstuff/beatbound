@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pw8rerkekhv4"
-path="res://.godot/imported/orb_flame.png-072ab4f8aa5b32d033d1289a39b885c7.ctex"
+uid="uid://dd1e3ma0iawtd"
+path="res://.godot/imported/orb_flame_red.png-c86e269985aef6be6d34eeddb0283af8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite/UI/orb_flame.png"
-dest_files=["res://.godot/imported/orb_flame.png-072ab4f8aa5b32d033d1289a39b885c7.ctex"]
+source_file="res://assets/aseprite/orb_flame_red.png"
+dest_files=["res://.godot/imported/orb_flame_red.png-c86e269985aef6be6d34eeddb0283af8.ctex"]
 
 [params]
 
