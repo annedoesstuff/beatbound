@@ -4,9 +4,12 @@ extends AnimatedSprite2D
 @export var combo_counter = 0
 
 @onready var beat_keeper = $"../../../BeatKeeper"
+var beat_duration = 0.5
 
 func _ready() -> void:
 	beats.clear()
+	beat_duration = 60 / beat_keeper.Tempo
+	#print(beat_duration)
 
 func _process(delta: float) -> void:
 	while (!beats.is_empty() && (!is_instance_valid(beats.front()) || beats.front().expired)):
@@ -18,6 +21,7 @@ func _on_beat_keeper_whole_beat(number: Variant, exact_msec: Variant) -> void:
 		return
 	
 	var beat_node = load("res://src/beat.tscn").instantiate()
+	beat_node.beat_duration = beat_duration
 	beat_node.position.x -= 152
 	beat_node.position.y += 7 # center on treadmill bg
 	add_child(beat_node)

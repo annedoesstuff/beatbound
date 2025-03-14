@@ -1,5 +1,8 @@
 Links: [[_progress-kanban|TODO]]
 ***
+# 2025-03-13
+Use  `beat_node.on_beat` to see if can move.
+
 # 2025-03-04 
 Player movement loop using `_process()`. Only happen when `can_move == true`. _process()_ checks every frame. `Input.is_action_just_pressed()` -> Triggers only once per key press.
 
