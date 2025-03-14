@@ -29,6 +29,12 @@ window/stretch/mode="viewport"
 
 enabled=PackedStringArray("res://addons/beatkeeper/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://src/": "blue"
+}
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

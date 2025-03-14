@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf1uhxhyyq54c"
-path="res://.godot/imported/orb_red.png-4e3776a2b0f82f0c25241ec71fa473ae.ctex"
+uid="uid://coby4h5bu4y4n"
+path="res://.godot/imported/enemie_mummy.png-1ffe9ef7a767bb03f3387b340ea61794.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite/orb_red.png"
-dest_files=["res://.godot/imported/orb_red.png-4e3776a2b0f82f0c25241ec71fa473ae.ctex"]
+source_file="res://assets/aseprite/Enemies/enemie_mummy.png"
+dest_files=["res://.godot/imported/enemie_mummy.png-1ffe9ef7a767bb03f3387b340ea61794.ctex"]
 
 [params]
 

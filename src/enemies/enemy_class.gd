@@ -1,0 +1,39 @@
+extends CharacterBody2D
+
+@onready var sprite = $AnimatedSprite
+@export var max_health = 1 # default
+@export var damage = 1 # default
+var current_health: int
+
+var is_alive = true
+
+func _ready() -> void:
+	current_health = max_health
+	sprite.play("idle")
+	
+# ---------------------------------
+
+func on_hit(damage_amount: int):
+	current_health -= damage_amount
+	
+	if current_health <= 0 and is_alive:
+		is_alive = false
+		explode()
+		# play death sprite
+
+func explode():
+	# timeout timer 0.2
+	var death_explosion = load("res://src/enemies/death_explosion.tscn").instantiate()
+	get_tree().root.add_child(death_explosion)
+	death_explosion.global_transform = global_transform
+	
+	var tween = death_explosion.create_tween()
+	tween.tween_property(death_explosion, "scale", death_explosion.scale * 50, 1)
+	await tween.finished
+	death_explosion.queue_free()
+
+func get_health():
+	return current_health
+
+# func player collision():
+# 	player.take_damage(damage)

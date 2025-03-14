@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=4 uid="uid://dxx8c2sa3xx5o"]
+[gd_scene load_steps=127 format=4 uid="uid://dxx8c2sa3xx5o"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_cor1m"]
 [ext_resource type="AudioStream" uid="uid://dbi8hht06frat" path="res://assets/music/crypteque.mp3" id="3_kkq8h"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ci5ag704gil5f" path="res://assets/CadencesOfHyrule/Crypt_Diggable.png" id="7_nyvcp"]
 [ext_resource type="Texture2D" uid="uid://c1cwr4eissgy" path="res://assets/aseprite/shadow_idle.png" id="8_flku7"]
 [ext_resource type="Texture2D" uid="uid://dtb2qokenhhjc" path="res://assets/aseprite/shadow_attack.png" id="8_p1aq4"]
+[ext_resource type="Script" path="res://src/player_camera.gd" id="8_vk0tj"]
 [ext_resource type="Texture2D" uid="uid://d4bhgnd361alr" path="res://assets/CadencesOfHyrule/base_tiles.png" id="8_w7uin"]
 [ext_resource type="Texture2D" uid="uid://beg74r6v4gsci" path="res://assets/aseprite/shadow_move.png" id="9_08d3m"]
 [ext_resource type="Texture2D" uid="uid://b2kjrlilbsnfb" path="res://assets/aseprite/shadow_hurt.png" id="9_a6324"]
@@ -15,6 +16,11 @@
 [ext_resource type="Texture2D" uid="uid://cepusidpswm8d" path="res://assets/aseprite/UI/treadmill.png" id="13_w5u0n"]
 [ext_resource type="Script" path="res://src/treadmill.gd" id="14_4buem"]
 [ext_resource type="Script" path="res://src/treadmill_hitbox.gd" id="15_cpgd2"]
+[ext_resource type="Texture2D" uid="uid://kv3btkyumsle" path="res://assets/aseprite/FX/hit 1.png" id="16_ugesm"]
+[ext_resource type="Texture2D" uid="uid://byocfnjthm7xg" path="res://assets/aseprite/FX/hit 2.png" id="17_5mn2o"]
+[ext_resource type="Texture2D" uid="uid://yw1wjwv2v56c" path="res://assets/aseprite/FX/hit 3.png" id="18_igwjn"]
+[ext_resource type="Texture2D" uid="uid://bo2cr74kmkw15" path="res://assets/aseprite/FX/hit 4.png" id="19_hyeuu"]
+[ext_resource type="AudioStream" uid="uid://dthsafngkjnu5" path="res://assets/music/hurt_sound.mp3" id="20_kmk0u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0d5rr"]
 texture = ExtResource("5_c5it3")
@@ -496,8 +502,8 @@ sources/1 = SubResource("TileSetAtlasSource_xsf7p")
 sources/2 = SubResource("TileSetAtlasSource_wfaua")
 sources/3 = SubResource("TileSetAtlasSource_gfv5u")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gljkl"]
-radius = 5.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_syubd"]
+size = Vector2(28, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yij2g"]
 atlas = ExtResource("8_p1aq4")
@@ -1201,7 +1207,46 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q5v1i"]
-size = Vector2(37.2727, 24.5454)
+size = Vector2(34.5455, 24.5454)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfudt"]
+atlas = ExtResource("16_ugesm")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q06mk"]
+atlas = ExtResource("17_5mn2o")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nipxo"]
+atlas = ExtResource("18_igwjn")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6e4up"]
+atlas = ExtResource("19_hyeuu")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tyghd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfudt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q06mk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nipxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6e4up")
+}],
+"loop": true,
+"name": &"default",
+"speed": 14.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ydwbk"]
+size = Vector2(28, 28)
 
 [node name="Game" type="Node2D"]
 
@@ -1228,10 +1273,11 @@ position = Vector2(304, 177)
 script = ExtResource("1_cor1m")
 
 [node name="PlayerCamera" type="Camera2D" parent="Player"]
+script = ExtResource("8_vk0tj")
 
 [node name="PlayerCollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(0, 5)
-shape = SubResource("CircleShape2D_gljkl")
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_syubd")
 
 [node name="PlayerAnimatedSprite" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(0, -7)
@@ -1248,17 +1294,38 @@ texture = ExtResource("13_w5u0n")
 
 [node name="Treadmill" type="AnimatedSprite2D" parent="Player/Hud"]
 position = Vector2(239, 243)
-scale = Vector2(1.1, 1.1)
+scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_rtuvh")
-frame_progress = 0.81208
+frame_progress = 0.726884
 script = ExtResource("14_4buem")
 
 [node name="OnBeat Area" type="Area2D" parent="Player/Hud/Treadmill"]
 script = ExtResource("15_cpgd2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hud/Treadmill/OnBeat Area"]
-position = Vector2(1.36363, 5.90909)
+position = Vector2(0.909088, 5.90909)
 shape = SubResource("RectangleShape2D_q5v1i")
+
+[node name="PlayerHurtEffect" type="Node2D" parent="Player"]
+
+[node name="PlayerHurtTimer" type="Timer" parent="Player/PlayerHurtEffect"]
+wait_time = 0.8
+one_shot = true
+
+[node name="HurtSprite" type="AnimatedSprite2D" parent="Player/PlayerHurtEffect"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_tyghd")
+frame_progress = 0.0331339
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="Player/PlayerHurtEffect"]
+stream = ExtResource("20_kmk0u")
+volume_db = -7.924
+
+[node name="HurtArea" type="Area2D" parent="Player/PlayerHurtEffect"]
+
+[node name="HurtCollision" type="CollisionShape2D" parent="Player/PlayerHurtEffect/HurtArea"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_ydwbk")
 
 [node name="TilemapLayer_Wall" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAMAAgAAQAAAAQAAAAMAAkAAQAEAAYAAAAMAAcAAQAAAAIAAAAMAAYAAQABAAIAAAAMAAUAAQABAAIAAAAMAAQAAQABAAIAAAAMAAMAAQACAAEAAAAMAAIAAQAAAAEAAAAMAAEAAQAAAAEAAAAMAAAAAQACAAEAAAAMAP//AQACAAIAAAANAAcAAQACAAIAAAAOAAcAAQADAAIAAAAQAAgAAQAEAAEAAAAQAAkAAQAEAAYAAAAQAAcAAQABAAMAAAARAAcAAQAEAAIAAAARAAgAAQACAAQAAAASAAcAAQAEAAIAAAASAAgAAQACAAQAAAATAAcAAQAEAAIAAAATAAgAAQACAAQAAAAUAAcAAQAEAAIAAAAUAAgAAQACAAQAAAAVAAcAAQABAAQAAAAWAAcAAQADAAIAAAAWAAgAAQAAAAQAAAANAAgAAQACAAQAAAAOAAgAAQABAAUAAAAVAAYAAQAAAAQAAAAVAAUAAQABAAIAAAAVAAQAAQABAAIAAAAVAAMAAQAEAAEAAAAVAAIAAQAEAAEAAAAVAAEAAQAAAAQAAAAVAAAAAQAEAAEAAAAVAP//AQADAAIAAAAWAAUAAQABAAIAAAAWAAQAAQABAAIAAAAWAAMAAQAEAAEAAAAWAAIAAQAEAAEAAAAWAAEAAQACAAMAAAAWAAYAAQAEAAYAAAANAP//AQACAAIAAAAOAP//AQACAAIAAAAPAP//AQACAAIAAAAQAP//AQADAAAAAAARAP//AQAEAAAAAAASAP//AQADAAAAAAATAP//AQAEAAAAAAAUAP//AQACAAIAAAAUAAAAAQABAAUAAAATAAAAAQACAAQAAAASAAAAAQACAAQAAAARAAAAAQACAAQAAAAQAAAAAQACAAQAAAAPAAAAAQACAAQAAAAOAAAAAQACAAQAAAANAAAAAQACAAQAAAAQAP7/AQADAAMAAAARAP7/AQACAAIAAAASAP7/AQACAAIAAAATAP7/AQAAAAMAAAAVAAgAAQACAAQAAAALAAEAAQADAAAAAAALAAAAAQADAAAAAAALAP//AQABAAQAAAALAP7/AQAAAAMAAAAKAAEAAQADAAEAAAAKAAAAAQADAAEAAAAKAP//AQAAAAIAAAAKAP7/AQADAAMAAAALAAIAAQADAAEAAAAKAAIAAQAEAAYAAAALAAMAAQAAAAIAAAALAAQAAQAEAAYAAAAAAP7/AQADAAMAAAABAP7/AQACAAIAAAACAP7/AQAEAAIAAAAGAP7/AQAEAAAAAAAHAP7/AQAEAAAAAAAIAP7/AQAEAAAAAAAJAP7/AQACAAEAAAAIAP//AQACAAQAAAAHAP//AQACAAQAAAAGAP//AQACAAQAAAAEAP//AQAAAAQAAAACAP//AQACAAQAAAABAP//AQACAAQAAAAAAP//AQABAAIAAAAGAP3/AQABAAMAAAAHAP3/AQACAAIAAAAIAP3/AQACAAIAAAAJAP3/AQADAAIAAAD+/wEAAQAEAAEAAAD+/wIAAQABAAIAAAD+/wMAAQAEAAEAAAD+/wQAAQADAAEAAAD9/wIAAQAEAAMAAAD9/wMAAQABAAIAAAD9/wQAAQAEAAYAAAD+/wUAAQAEAAAAAAD+/wYAAQADAAAAAAD+/wcAAQACAAQAAAD//wQAAQACAAIAAAD//wUAAQAEAAAAAAD//wYAAQACAAEAAAD//wcAAQABAAUAAAAAAAQAAQAAAAMAAAAAAAUAAQAEAAAAAAAAAAYAAQACAAQAAAABAAUAAQAAAAMAAAABAAYAAQABAAUAAAADAAUAAQACAAMAAAADAAYAAQAEAAYAAAAGAAUAAQAEAAMAAAAGAAYAAQABAAIAAAAGAAcAAQAAAAIAAAAGAAgAAQAAAAYAAAAHAAcAAQADAAIAAAAHAAgAAQABAAUAAAAHAAMAAQACAAMAAAAHAAQAAQAEAAYAAAAEAAAAAQABAAIAAAAEAAEAAQAEAAYAAAADAP7/AQAEAAIAAAADAP//AQABAAUAAAAEAP7/AQACAAIAAAAFAP7/AQACAAIAAAAFAP//AQACAAQAAAAAAAAAAQACAAEAAAAAAAEAAQABAAUAAAD//wAAAQABAAMAAAD//wEAAQAAAAYAAAD+/wAAAQAEAAMAAAD9/wUAAQABAAMAAAD9/wYAAQAEAAAAAAD9/wcAAQAAAAEAAAD9/wgAAQACAAEAAAD9/wkAAQABAAUAAAAJAP//AQABAAUAAAD8/wYAAQADAAMAAAD8/wcAAQAEAAAAAAD8/wgAAQADAAAAAAD8/wkAAQACAAEAAAD8/woAAQAAAAEAAAD8/wsAAQACAAEAAAD8/wwAAQAEAAEAAAD8/w0AAQAAAAQAAAD7/wgAAQADAAEAAAD7/wkAAQADAAEAAAD7/wcAAQADAAMAAAD7/woAAQADAAEAAAD7/wsAAQAAAAIAAAD7/wwAAQAAAAYAAAD7/w0AAQAEAAMAAAD7/w4AAQAEAAYAAAD8/w4AAQAAAAQAAAD8/w8AAQAAAAIAAAD8/xAAAQAAAAYAAAD9/w8AAQAAAAMAAAD9/xAAAQABAAUAAAD+/w8AAQADAAMAAAD+/xAAAQADAAEAAAD//w8AAQACAAIAAAD//xAAAQACAAEAAAD+/xEAAQAAAAYAAAD//xEAAQABAAUAAAACAA8AAQAAAAEAAAACABAAAQABAAUAAAABAA8AAQACAAIAAAABABAAAQACAAQAAAAAAA8AAQAEAAIAAAAAABAAAQACAAQAAAACAAwAAQADAAMAAAACAA0AAQADAAEAAAACAA4AAQAAAAQAAAAHAA0AAQADAAAAAAAHAAwAAQAAAAMAAAAGAA0AAQAEAAAAAAAGAAwAAQACAAIAAAAFAA0AAQADAAAAAAAFAAwAAQACAAIAAAAEAA0AAQADAAAAAAAEAAwAAQAEAAIAAAADAA0AAQAEAAAAAAADAAwAAQAEAAIAAAADAA4AAQACAAQAAAAEAA4AAQAEAAEAAAAFAA4AAQACAAQAAAAGAA4AAQACAAQAAAAHAA4AAQACAAQAAAAIAA0AAQAAAAMAAAAIAA4AAQABAAUAAAAKAA0AAQABAAMAAAAKAA4AAQAAAAYAAAALAAwAAQAEAAMAAAALAA0AAQAEAAAAAAALAA4AAQACAAQAAAAEABQAAQAEAAEAAAAEABMAAQABAAIAAAAEABIAAQAEAAEAAAAEABEAAQABAAIAAAAEABAAAQAEAAEAAAAEAA8AAQAEAAEAAAAEABUAAQAAAAIAAAAEABYAAQAAAAYAAAAMABUAAQAAAAEAAAALABUAAQACAAIAAAAKABUAAQACAAIAAAAJABUAAQACAAIAAAAIABUAAQAEAAIAAAAHABUAAQAEAAIAAAAGABUAAQACAAIAAAAFABUAAQACAAIAAAAFABYAAQACAAQAAAAGABYAAQACAAQAAAAHABYAAQACAAQAAAAIABYAAQACAAQAAAAJABYAAQACAAQAAAAKABYAAQACAAQAAAALABYAAQACAAQAAAAMABYAAQABAAUAAAAMABQAAQACAAEAAAAMABMAAQAAAAEAAAAMABIAAQAAAAEAAAAMABEAAQACAAEAAAAMABAAAQACAAEAAAAMAA8AAQAAAAEAAAAMAA4AAQAAAAEAAAAMAA0AAQAAAAMAAAAWAAkAAQAAAAIAAAAWAAoAAQAAAAIAAAAWAAsAAQABAAIAAAAWAAwAAQAEAAYAAAAXAAkAAQAAAAMAAAAXAAoAAQAAAAEAAAAXAAsAAQABAAUAAAANAAsAAQAEAAMAAAANAAwAAQAEAAYAAAA=")
@@ -1268,6 +1335,9 @@ tile_set = SubResource("TileSet_wyr0l")
 visible = false
 tile_set = SubResource("TileSet_wyr0l")
 
+[connection signal="whole_beat" from="BeatKeeper" to="BeatKeeper" method="_on_whole_beat"]
+[connection signal="whole_beat" from="BeatKeeper" to="TilemapLayer_Floor" method="_on_beat_keeper_whole_beat"]
 [connection signal="whole_beat" from="BeatKeeper" to="Player" method="_on_beat_keeper_whole_beat"]
 [connection signal="whole_beat" from="BeatKeeper" to="Player/Hud/Treadmill" method="_on_beat_keeper_whole_beat"]
 [connection signal="timeout" from="BeatTimer" to="Player" method="_on_beat_timer_timeout"]
+[connection signal="timeout" from="Player/PlayerHurtEffect/PlayerHurtTimer" to="Player" method="_on_player_hurt_timer_timeout"]

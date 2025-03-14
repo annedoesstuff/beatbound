@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://yw5irof2gyus"]
+
+[ext_resource type="Texture2D" uid="uid://c1i3gopa5jf5o" path="res://assets/aseprite/Enemies/destroy_bubble.png" id="1_q1abs"]
+
+[node name="DeathExplosion" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_q1abs")
