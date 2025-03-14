@@ -1250,7 +1250,7 @@ texture = ExtResource("13_w5u0n")
 position = Vector2(239, 243)
 scale = Vector2(1.1, 1.1)
 sprite_frames = SubResource("SpriteFrames_rtuvh")
-frame_progress = 0.979765
+frame_progress = 0.81208
 script = ExtResource("14_4buem")
 
 [node name="OnBeat Area" type="Area2D" parent="Player/Hud/Treadmill"]

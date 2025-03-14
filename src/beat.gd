@@ -33,13 +33,13 @@ func play_on_beat():
 		did_crit = true
 	
 	tween.kill()
-	beat_collision.call_deferred("set_disabled", true)  # Use `call_deferred()` instead of `set_deferred()`
+	beat_collision.call_deferred("set_disabled", true) 
 	
 	# when hit puls big and change color to red then remove
 	tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(1.3, 1.3), 0.2).set_trans(Tween.TRANS_QUAD)
-	tween.tween_property(self, "position:x", position.x - 5, 0.2)
-	tween.tween_property(self, "modulate", Color(1.0, 0.3, 0.3, 1), 0.1)
+	#tween.tween_property(self, "position:x", position.x - 5, 0.2)
+	tween.tween_property(self, "modulate", Color(1.0, 0.3, 0.3, 0.6), 0.1) # red color at 60% opacity
 	tween.tween_property(self, "modulate", Color(1,1,1,0), 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	tween.tween_property(self, "scale", Vector2(0.8,0.8), 0.15).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	
@@ -48,7 +48,7 @@ func play_on_beat():
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.has_meta("crit"):
+	if area.has_meta("crit"): # TODO: make crit area & crit damage
 		self.on_crit = area.crit
 	self.on_beat = true
 	print("+++")
