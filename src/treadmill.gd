@@ -4,11 +4,11 @@ extends AnimatedSprite2D
 @export var combo_counter = 0
 
 @onready var beat_keeper = $"../../../BeatKeeper"
-var beat_duration = 0.5
+var beat_duration = 0.5 # gets changed in _ready()
 
 func _ready() -> void:
 	beats.clear()
-	beat_duration = 60 / beat_keeper.Tempo
+	beat_duration = (60 / beat_keeper.Tempo) * 2 # no idea why * 2 works but it does so im not questioning it 
 	#print(beat_duration)
 
 func _process(delta: float) -> void:

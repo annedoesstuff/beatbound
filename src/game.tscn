@@ -1201,7 +1201,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q5v1i"]
-size = Vector2(62.7273, 24.5454)
+size = Vector2(37.2727, 24.5454)
 
 [node name="Game" type="Node2D"]
 
@@ -1250,7 +1250,7 @@ texture = ExtResource("13_w5u0n")
 position = Vector2(239, 243)
 scale = Vector2(1.1, 1.1)
 sprite_frames = SubResource("SpriteFrames_rtuvh")
-frame_progress = 0.0765958
+frame_progress = 0.979765
 script = ExtResource("14_4buem")
 
 [node name="OnBeat Area" type="Area2D" parent="Player/Hud/Treadmill"]

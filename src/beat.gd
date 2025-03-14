@@ -19,7 +19,7 @@ func _ready() -> void:
 	tween.tween_property(self, "modulate", Color(1,1,1,1), 0.15)
 	await tween.finished  
 	
-	# Move down & fade-out animation
+	# Move left & fade-out animation
 	tween = create_tween()
 	tween.tween_property(self, "position:x", position.x + 152, beat_duration)
 	tween.tween_property(self, "modulate", Color(1,1,1,0), 0.5).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
