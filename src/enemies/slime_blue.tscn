@@ -37,8 +37,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_br2xh")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
+"name": &"idle",
+"speed": 4.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ieqeh"]
@@ -53,8 +53,7 @@ shape = SubResource("CircleShape2D_cuxhk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_erq8m")
-frame = 3
-frame_progress = 0.692166
+animation = &"idle"
 
 [node name="SoundEffects" type="AudioStreamPlayer2D" parent="."]
 

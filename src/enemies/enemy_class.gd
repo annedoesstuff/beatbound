@@ -17,9 +17,11 @@ func _ready() -> void:
 # ---------------------------------
 
 func on_hit(damage_amount: int):
+	print(">enemy lost 1 health")
 	current_health -= damage_amount
 	
 	if current_health <= 0 and is_alive:
+		print(">enemy died")
 		is_alive = false
 		explode()
 		# play death sprite

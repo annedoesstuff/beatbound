@@ -7,11 +7,13 @@ extends CharacterBody2D
 @onready var player_camera = $PlayerCamera
 @onready var ray_cast = $RayCast2D
 
+@onready var flash_light = $PlayerFlashEffect/PointLight2D
+
+@onready var hurt_tween
 @onready var hurt_sprite = $PlayerHurtEffect/HurtSprite
 @onready var hurt_timer = $PlayerHurtEffect/PlayerHurtTimer
 @onready var hurt_collision = $PlayerHurtEffect/HurtArea/HurtCollision
 @onready var hurt_sound = $PlayerHurtEffect/HurtSound
-@onready var hurt_tween = create_tween()
 var player_hurt = false
 
 var max_health = 3
@@ -74,7 +76,7 @@ func move(direction:Vector2):
 	ray_cast.force_raycast_update()
 	
 	if ray_cast.is_colliding():
-		# TODO: attack
+		attack(direction)
 		return	
 	
 	# move player
@@ -84,6 +86,17 @@ func move(direction:Vector2):
 ########### [BeatKeeper] ####################
 func _on_beat_keeper_whole_beat(number: Variant, exact_msec: Variant) -> void:
 	print("Beat!")
+
+########### [ATTACK] ########################
+func attack(direction):
+	# animation
+	player_sprite.play("attack_down")
+	player_camera._cameraShake(6)
+	var flash_tween = create_tween()
+	flash_tween.tween_property(flash_light, "energy", 2, 0.05)
+	flash_tween.tween_property(flash_light, "energy", 0.4, 0.25).set_delay(0.05) 
+	await player_sprite.animation_finished
+	player_sprite.play("idle_down")
 
 ########### [HURT] ##########################
 #func on_hit(damage):
@@ -107,6 +120,7 @@ func _on_beat_keeper_whole_beat(number: Variant, exact_msec: Variant) -> void:
 			#play_hurt_flicker()
 	#
 #func play_hurt_flicker():
+	#hurt_tween = create_tween()
 	#hurt_tween.tween_property(player_sprite, "modulate", Color(1,1,1,0), 0.2)
 	#hurt_tween.tween_property(player_sprite, "modulate", Color(1,1,1,1), 0.2).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 #

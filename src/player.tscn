@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://coqfw6vh6r4lw"]
+[gd_scene load_steps=117 format=3 uid="uid://coqfw6vh6r4lw"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_toqu4"]
 [ext_resource type="Script" path="res://src/player_camera.gd" id="2_bn82w"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://yw1wjwv2v56c" path="res://assets/aseprite/FX/hit 3.png" id="13_uuied"]
 [ext_resource type="Texture2D" uid="uid://bo2cr74kmkw15" path="res://assets/aseprite/FX/hit 4.png" id="14_sncfd"]
 [ext_resource type="AudioStream" uid="uid://dthsafngkjnu5" path="res://assets/music/hurt_sound.mp3" id="15_mcyi8"]
+[ext_resource type="Texture2D" uid="uid://bv1hjb6kak2yd" path="res://assets/aseprite/FX/hud lantern light.png" id="16_or2h6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fv0hg"]
 
@@ -330,9 +331,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8ej5d")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_down",
-"speed": 7.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -356,9 +357,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t4u14")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_side",
-"speed": 7.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -382,9 +383,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ue2ws")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_up",
-"speed": 7.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -775,9 +776,9 @@ shape = SubResource("CircleShape2D_fv0hg")
 [node name="PlayerAnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_t6bbt")
-animation = &"move_down"
-frame = 4
-frame_progress = 0.186082
+animation = &"attack_up"
+frame = 6
+frame_progress = 1.0
 
 [node name="Hud" type="CanvasLayer" parent="."]
 
@@ -825,5 +826,13 @@ target_position = Vector2(0, 32)
 collision_mask = 4
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="PlayerFlashEffect" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="PlayerFlashEffect"]
+color = Color(0.8, 0, 0, 1)
+energy = 0.0
+texture = ExtResource("16_or2h6")
+texture_scale = 3.0
 
 [connection signal="timeout" from="PlayerHurtEffect/PlayerHurtTimer" to="." method="_on_player_hurt_timer_timeout"]
