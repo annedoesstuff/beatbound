@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://coqfw6vh6r4lw"]
+[gd_scene load_steps=114 format=3 uid="uid://coqfw6vh6r4lw"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_toqu4"]
 [ext_resource type="Script" path="res://src/player_camera.gd" id="2_bn82w"]
@@ -18,10 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://bv1hjb6kak2yd" path="res://assets/aseprite/FX/hud lantern light.png" id="16_or2h6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fv0hg"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yij2g"]
-atlas = ExtResource("3_sxpvd")
-region = Rect2(0, 0, 65, 65)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nwiqb"]
 atlas = ExtResource("3_sxpvd")
@@ -47,10 +43,6 @@ region = Rect2(0, 65, 65, 65)
 atlas = ExtResource("3_sxpvd")
 region = Rect2(65, 65, 65, 65)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rwr7s"]
-atlas = ExtResource("3_sxpvd")
-region = Rect2(130, 65, 65, 65)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_mdt6h"]
 atlas = ExtResource("3_sxpvd")
 region = Rect2(195, 65, 65, 65)
@@ -74,10 +66,6 @@ region = Rect2(130, 130, 65, 65)
 [sub_resource type="AtlasTexture" id="AtlasTexture_t4u14"]
 atlas = ExtResource("3_sxpvd")
 region = Rect2(195, 130, 65, 65)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5pvgb"]
-atlas = ExtResource("3_sxpvd")
-region = Rect2(260, 130, 65, 65)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qoqtq"]
 atlas = ExtResource("3_sxpvd")
@@ -311,9 +299,6 @@ region = Rect2(34, 102, 34, 34)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yij2g")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_nwiqb")
 }, {
 "duration": 1.0,
@@ -333,12 +318,9 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_down",
-"speed": 9.0
+"speed": 15.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rwr7s")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mdt6h")
 }, {
@@ -359,12 +341,9 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_side",
-"speed": 9.0
+"speed": 15.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5pvgb")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qoqtq")
 }, {
@@ -385,7 +364,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_up",
-"speed": 9.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -777,8 +756,6 @@ shape = SubResource("CircleShape2D_fv0hg")
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_t6bbt")
 animation = &"attack_up"
-frame = 6
-frame_progress = 1.0
 
 [node name="Hud" type="CanvasLayer" parent="."]
 

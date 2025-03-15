@@ -78,10 +78,10 @@ func move(direction:Vector2):
 	if ray_cast.is_colliding():
 		attack(direction)
 		return	
-	
+
 	# move player
 	global_position = tile_map.map_to_local(target_tile)
-	
+
 
 ########### [BeatKeeper] ####################
 func _on_beat_keeper_whole_beat(number: Variant, exact_msec: Variant) -> void:
@@ -90,12 +90,25 @@ func _on_beat_keeper_whole_beat(number: Variant, exact_msec: Variant) -> void:
 ########### [ATTACK] ########################
 func attack(direction):
 	# animation
-	player_sprite.play("attack_down")
+	var attack_animation = ""
+	match direction:
+		Vector2.RIGHT:
+			attack_animation = "attack_side"
+		Vector2.LEFT:
+			attack_animation = "attack_side"
+			player_sprite.flip_h = true
+		Vector2.UP:
+			attack_animation = "attack_up"
+		Vector2.DOWN:
+			attack_animation = "attack_down"
+	player_sprite.play(attack_animation, true)
+	
 	player_camera._cameraShake(6)
 	var flash_tween = create_tween()
 	flash_tween.tween_property(flash_light, "energy", 2, 0.05)
 	flash_tween.tween_property(flash_light, "energy", 0.4, 0.25).set_delay(0.05) 
 	await player_sprite.animation_finished
+	player_sprite.flip_h = false
 	player_sprite.play("idle_down")
 
 ########### [HURT] ##########################
