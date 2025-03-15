@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@onready var beat_keeper = $"../BeatKeeper"
-@onready var tile_map = $"../TilemapLayer_Logic"
+@onready var beat_keeper = get_tree().current_scene.find_child("BeatKeeper")
+@onready var tile_map = get_tree().current_scene.find_child("TilemapLayer_Logic")
 @onready var player_sprite = $PlayerAnimatedSprite
 @onready var treadmill = $Hud/Treadmill
 @onready var player_camera = $PlayerCamera
@@ -21,6 +21,7 @@ var is_alive = true
 
 ########### [Game Functions] ############
 func _ready() -> void:
+	beat_keeper.whole_beat.connect(_on_beat_keeper_whole_beat)
 	beat_keeper.play()
 	treadmill.play("default")
 	health = max_health
@@ -66,6 +67,8 @@ func move(direction:Vector2):
 	if tile_data.get_custom_data("walkable") == false:
 		print("cannot move there")
 		return
+	
+	# TODO: if collision detected attack instead 	
 	# move player
 	global_position = tile_map.map_to_local(target_tile)
 	

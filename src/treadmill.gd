@@ -3,10 +3,11 @@ extends AnimatedSprite2D
 @export var beats = []
 @export var combo_counter = 0
 
-@onready var beat_keeper = $"../../../BeatKeeper"
+@onready var beat_keeper = get_tree().current_scene.find_child("BeatKeeper")
 var beat_duration = 0.5 # gets changed in _ready()
 
 func _ready() -> void:
+	beat_keeper.whole_beat.connect(_on_beat_keeper_whole_beat)
 	beats.clear()
 	beat_duration = (60 / beat_keeper.Tempo) * 2 # no idea why * 2 works but it does so im not questioning it 
 	#print(beat_duration)

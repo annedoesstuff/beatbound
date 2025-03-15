@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
-@onready var sprite = $AnimatedSprite
+@onready var beat_keeper = get_tree().current_scene.find_child("BeatKeeper")
+@onready var tile_map = get_tree().current_scene.find_child("TilemapLayer_Logic")
+
+@onready var sprite = $AnimatedSprite2D
 @export var max_health = 1 # default
 @export var damage = 1 # default
 var current_health: int
