@@ -55,9 +55,21 @@
               "icon": "lucide-file",
               "title": "_log"
             }
+          },
+          {
+            "id": "7f42e025d045b8ab",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.8.9"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.8.9"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -201,7 +213,7 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "bfb2bee67e1caee8",
+  "active": "ebb676b557dd8b64",
   "lastOpenFiles": [
     "playground.canvas",
     "_log.md",

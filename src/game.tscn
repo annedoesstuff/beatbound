@@ -518,7 +518,7 @@ visible = false
 tile_set = SubResource("TileSet_wyr0l")
 
 [node name="Slime_Blue" parent="." instance=ExtResource("22_0gn42")]
-position = Vector2(240, 144)
+position = Vector2(240, 176)
 
 [connection signal="whole_beat" from="BeatKeeper" to="BeatKeeper" method="_on_whole_beat"]
 [connection signal="whole_beat" from="BeatKeeper" to="TilemapLayer_Floor" method="_on_beat_keeper_whole_beat"]

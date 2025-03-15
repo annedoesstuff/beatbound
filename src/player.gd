@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var player_sprite = $PlayerAnimatedSprite
 @onready var treadmill = $Hud/Treadmill
 @onready var player_camera = $PlayerCamera
+@onready var ray_cast = $RayCast2D
 
 @onready var hurt_sprite = $PlayerHurtEffect/HurtSprite
 @onready var hurt_timer = $PlayerHurtEffect/PlayerHurtTimer
@@ -68,7 +69,14 @@ func move(direction:Vector2):
 		print("cannot move there")
 		return
 	
-	# TODO: if collision detected attack instead 	
+	# check if enemy on tile
+	ray_cast.target_position = direction * 32 # point up down, left, right (tiles: 32x32)
+	ray_cast.force_raycast_update()
+	
+	if ray_cast.is_colliding():
+		# TODO: attack
+		return	
+	
 	# move player
 	global_position = tile_map.map_to_local(target_tile)
 	

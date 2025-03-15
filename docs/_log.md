@@ -1,6 +1,15 @@
 Links: [[_progress-kanban|TODO]]
 ***
-# 2025-03-13
+# 2025-03-11
+Collision Layer -> wo existiert area
+Collision Mask -> was kann erkennen
+
+*Layers:*
+- Layer & Mask 1 -> Beat and Treadmill
+- Player on Layer 2, Mask 3
+- Enemies on Layer 3, Mask 2
+
+# 2025-03-10
 Use  `beat_node.on_beat` to see if can move.
 
 # 2025-03-04 
