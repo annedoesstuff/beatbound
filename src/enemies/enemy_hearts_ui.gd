@@ -1,19 +1,19 @@
 extends Control
 
-@export var max_health = 5 # overwritten by enemy_class.gd
-var current_health
-@onready var heart_container = $HBoxContainer
+@onready var hearts = $HBoxContainer.get_children()
+@onready var hearts_container = $HBoxContainer
+@export var heart_full_texture: Texture2D
+@export var heart_empty_texture: Texture2D
 
 
-func _ready() -> void:
-	current_health = max_health
-	update_hearts()
+func set_health(max_health: int):
+	for i in range(hearts_container.get_child_count()):
+		hearts_container.get_child(i).visible = i < max_health
 
-
-func update_hearts():
-	for i in range(heart_container.get_child_count()):
-		heart_container.get_child(i).visible = i < current_health
-
-func set_health(new_health):
-	current_health = max(new_health, 0) # not negative
-	update_hearts()
+func update_health(current_health: int, max_health: int):
+	for i in range(max_health):
+		if i < current_health:
+			hearts[i].texture = heart_full_texture
+		else:
+			hearts[i].texture = heart_empty_texture
+	

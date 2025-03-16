@@ -23,8 +23,7 @@ func _ready() -> void:
 	beat_keeper.whole_beat.connect(_on_beat_keeper_whole_beat)
 	add_to_group("enemy") #enemy group for player attack detection & dealing damage
 	current_health = max_health
-	hearts_ui.max_health = max_health
-	hearts_ui.set_health(0) # to make it only visible once the player hits the enemy once
+	hearts_ui.set_health(max_health)
 	sprite.play("idle")
 	
 # ---------------------------------
@@ -42,10 +41,11 @@ func move():
 func on_hit(damage_amount: int):
 	stunned = true
 	sprite.stop()
-	print(">enemy lost 1 health")
+	print(">enemy lost health")
 	current_health -= damage_amount
-	hearts_ui.set_health(current_health)
 	play_hurt_sound()
+	if !hearts_ui.visible: hearts_ui.visible = true
+	hearts_ui.update_health(current_health, max_health)
 	
 	if current_health <= 0 and is_alive:
 		print(">enemy died")
