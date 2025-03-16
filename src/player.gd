@@ -32,6 +32,7 @@ func _ready() -> void:
 	health_ui.update_health(health, max_health)
 	player_sprite.play("idle_down")
 	add_to_group("player")
+	z_index = 1
 	
 
 func _process(delta: float) -> void:

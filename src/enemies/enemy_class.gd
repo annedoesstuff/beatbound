@@ -25,6 +25,7 @@ func _ready() -> void:
 	current_health = max_health
 	hearts_ui.set_health(max_health)
 	sprite.play("idle")
+	z_index = 1
 	
 # ---------------------------------
 func _on_beat_keeper_whole_beat(number, exact_msec):
