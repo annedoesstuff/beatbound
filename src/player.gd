@@ -29,6 +29,7 @@ func _ready() -> void:
 	treadmill.play("default")
 	health = max_health
 	player_sprite.play("idle_down")
+	add_to_group("player")
 
 func _process(delta: float) -> void:
 	if !is_alive:
@@ -89,6 +90,14 @@ func _on_beat_keeper_whole_beat(number: Variant, exact_msec: Variant) -> void:
 
 ########### [ATTACK] ########################
 func attack(direction):
+	print("Attacking in direction:", direction)
+	var enemy = ray_cast.get_collider().owner
+	print(enemy)
+	if enemy and enemy.is_in_group("enemy"):
+		print("Im hitting the prick")
+		enemy.on_hit(1) #take one damage
+	
+	
 	# animation
 	var attack_animation = ""
 	match direction:

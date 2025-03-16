@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://l3gg85cm0hqw"]
+[gd_scene load_steps=11 format=3 uid="uid://l3gg85cm0hqw"]
 
 [ext_resource type="Script" path="res://src/enemies/slime_blue.gd" id="1_cnewr"]
+[ext_resource type="PackedScene" uid="uid://cxon3hmruc2hj" path="res://src/enemies/enemy_hearts_ui.tscn" id="2_gcc3a"]
 [ext_resource type="Texture2D" uid="uid://tqpvbnpxirvd" path="res://assets/aseprite/Enemies/enemie_slime_blue.png" id="2_rrnar"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cuxhk"]
@@ -48,6 +49,12 @@ size = Vector2(30, 30)
 position = Vector2(16, 16)
 script = ExtResource("1_cnewr")
 
+[node name="enemy_hearts_ui" parent="." instance=ExtResource("2_gcc3a")]
+offset_left = -43.0
+offset_top = -22.0
+offset_right = -43.0
+offset_bottom = -22.0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_cuxhk")
 
@@ -56,6 +63,7 @@ sprite_frames = SubResource("SpriteFrames_erq8m")
 animation = &"idle"
 
 [node name="SoundEffects" type="AudioStreamPlayer2D" parent="."]
+volume_db = -9.905
 
 [node name="HurtArea" type="Area2D" parent="."]
 collision_layer = 4

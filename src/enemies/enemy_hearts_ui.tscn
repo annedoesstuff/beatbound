@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxon3hmruc2hj"]
+
+[ext_resource type="Script" path="res://src/enemies/enemy_hearts_ui.gd" id="1_2bcdh"]
+[ext_resource type="Texture2D" uid="uid://d03d76703g03r" path="res://assets/aseprite/UI/heart.png" id="1_wioy8"]
+
+[node name="enemy_hearts_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_2bcdh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 86.0
+offset_bottom = 13.0
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="heart1" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_wioy8")
+stretch_mode = 2
+
+[node name="heart2" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_wioy8")
+stretch_mode = 2
+
+[node name="heart3" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_wioy8")
+stretch_mode = 2
+
+[node name="heart4" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_wioy8")
+stretch_mode = 2
+
+[node name="heart5" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_wioy8")
+stretch_mode = 2
