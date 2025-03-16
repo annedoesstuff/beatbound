@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://brhept0jhob50"]
+
+[ext_resource type="Script" path="res://src/enemies/slime_pink.gd" id="1_o406v"]
+[ext_resource type="PackedScene" uid="uid://cxon3hmruc2hj" path="res://src/enemies/enemy_hearts_ui.tscn" id="2_5anmv"]
+[ext_resource type="Texture2D" uid="uid://dtmmn28i5b7xb" path="res://assets/aseprite/Enemies/enemie_slime_pink.png" id="3_qhkwp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cuxhk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlsko"]
+atlas = ExtResource("3_qhkwp")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jl2s"]
+atlas = ExtResource("3_qhkwp")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iubvl"]
+atlas = ExtResource("3_qhkwp")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60btt"]
+atlas = ExtResource("3_qhkwp")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_erq8m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlsko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jl2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iubvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60btt")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ieqeh"]
+size = Vector2(30, 30)
+
+[node name="Slime_Pink" type="CharacterBody2D"]
+position = Vector2(16, 16)
+script = ExtResource("1_o406v")
+
+[node name="enemy_hearts_ui" parent="." instance=ExtResource("2_5anmv")]
+offset_left = -43.0
+offset_top = -22.0
+offset_right = -43.0
+offset_bottom = -22.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cuxhk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_erq8m")
+animation = &"idle"
+
+[node name="SoundEffects" type="AudioStreamPlayer2D" parent="."]
+volume_db = -9.905
+
+[node name="HurtArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="HurtCollision" type="CollisionShape2D" parent="HurtArea"]
+shape = SubResource("RectangleShape2D_ieqeh")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 32)
+collision_mask = 6
+collide_with_areas = true
+collide_with_bodies = false

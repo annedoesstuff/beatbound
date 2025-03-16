@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dxx8c2sa3xx5o"]
+[gd_scene load_steps=15 format=4 uid="uid://dxx8c2sa3xx5o"]
 
 [ext_resource type="AudioStream" uid="uid://dbi8hht06frat" path="res://assets/music/crypteque.mp3" id="3_kkq8h"]
 [ext_resource type="Script" path="res://addons/beatkeeper/beatkeeper_node.gd" id="4_i0p0d"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ci5ag704gil5f" path="res://assets/CadencesOfHyrule/Crypt_Diggable.png" id="7_nyvcp"]
 [ext_resource type="PackedScene" uid="uid://coqfw6vh6r4lw" path="res://src/player.tscn" id="7_rnihu"]
 [ext_resource type="Texture2D" uid="uid://d4bhgnd361alr" path="res://assets/CadencesOfHyrule/base_tiles.png" id="8_w7uin"]
+[ext_resource type="PackedScene" uid="uid://brhept0jhob50" path="res://src/enemies/slime_pink.tscn" id="9_pqo44"]
 [ext_resource type="PackedScene" uid="uid://l3gg85cm0hqw" path="res://src/enemies/slime_blue.tscn" id="22_0gn42"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0d5rr"]
@@ -508,7 +509,10 @@ tile_map_data = PackedByteArray("AAABAP//AQAAAAoAAAACAP//AQAAAAAAAAADAP//AQAAAAA
 tile_set = SubResource("TileSet_wyr0l")
 
 [node name="Slime_Blue" parent="." instance=ExtResource("22_0gn42")]
-position = Vector2(304, 112)
+position = Vector2(336, 112)
+
+[node name="Slime_Pink" parent="." instance=ExtResource("9_pqo44")]
+position = Vector2(240, 208)
 
 [node name="Player" parent="." instance=ExtResource("7_rnihu")]
 

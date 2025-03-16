@@ -1,11 +1,15 @@
 extends "res://src/enemies/enemy_class.gd"
 
-var direction = Vector2.UP
+var direction = Vector2.LEFT
 
 func _ready() -> void:
 	max_health = 2
 	damage = 1
 	super()
+
+func _on_beat_keeper_whole_beat(beat_number, exact_msec):
+	if beat_number % 3 == 0:  # Move every 3 beats
+		move()
 
 func move():
 	var current_tile = tile_map.local_to_map(global_position)
@@ -31,7 +35,7 @@ func move():
 			return
 		elif mob and mob.is_in_group("enemy"):
 			print("found other enemy")
-			# TODO: what happens
+			# TODO: wtf should happen i dont know
 		
 		
 		
