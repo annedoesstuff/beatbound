@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://coqfw6vh6r4lw"]
+[gd_scene load_steps=117 format=3 uid="uid://coqfw6vh6r4lw"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_toqu4"]
 [ext_resource type="Script" path="res://src/player_camera.gd" id="2_bn82w"]
@@ -11,7 +11,10 @@
 [ext_resource type="Script" path="res://src/treadmill.gd" id="9_mbt04"]
 [ext_resource type="Script" path="res://src/treadmill_hitbox.gd" id="10_oaw40"]
 [ext_resource type="Texture2D" uid="uid://kv3btkyumsle" path="res://assets/aseprite/FX/hit 1.png" id="11_m7elu"]
+[ext_resource type="Texture2D" uid="uid://d03d76703g03r" path="res://assets/aseprite/UI/heart.png" id="11_pnar6"]
+[ext_resource type="Script" path="res://src/player_health_ui.gd" id="11_s4lob"]
 [ext_resource type="Texture2D" uid="uid://byocfnjthm7xg" path="res://assets/aseprite/FX/hit 2.png" id="12_asl8e"]
+[ext_resource type="Texture2D" uid="uid://clbhd1cen5kqi" path="res://assets/aseprite/UI/heart_empty.png" id="13_ewm0b"]
 [ext_resource type="Texture2D" uid="uid://yw1wjwv2v56c" path="res://assets/aseprite/FX/hit 3.png" id="13_uuied"]
 [ext_resource type="Texture2D" uid="uid://bo2cr74kmkw15" path="res://assets/aseprite/FX/hit 4.png" id="14_sncfd"]
 [ext_resource type="AudioStream" uid="uid://dthsafngkjnu5" path="res://assets/music/hurt_sound.mp3" id="15_mcyi8"]
@@ -761,11 +764,12 @@ animation = &"attack_up"
 
 [node name="Treadmill Bg" type="Sprite2D" parent="Hud"]
 position = Vector2(240, 251)
+scale = Vector2(1.4, 1.4)
 texture = ExtResource("7_kp6cg")
 
 [node name="Treadmill" type="AnimatedSprite2D" parent="Hud"]
-position = Vector2(239, 243)
-scale = Vector2(1.2, 1.2)
+position = Vector2(239, 241)
+scale = Vector2(1.4, 1.4)
 sprite_frames = SubResource("SpriteFrames_rtuvh")
 frame_progress = 0.726884
 script = ExtResource("9_mbt04")
@@ -776,6 +780,44 @@ script = ExtResource("10_oaw40")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hud/Treadmill/OnBeat Area"]
 position = Vector2(0.909088, 5.90909)
 shape = SubResource("RectangleShape2D_q5v1i")
+
+[node name="PlayerHealthUI" type="Control" parent="Hud"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 48.0
+scale = Vector2(2, 2)
+script = ExtResource("11_s4lob")
+heart_full_texture = ExtResource("11_pnar6")
+heart_empty_texture = ExtResource("13_ewm0b")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Hud/PlayerHealthUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 1
+
+[node name="heart1" type="TextureRect" parent="Hud/PlayerHealthUI/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("11_pnar6")
+stretch_mode = 2
+
+[node name="heart2" type="TextureRect" parent="Hud/PlayerHealthUI/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("11_pnar6")
+stretch_mode = 2
+
+[node name="heart3" type="TextureRect" parent="Hud/PlayerHealthUI/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("11_pnar6")
+stretch_mode = 2
+
+[node name="heart4" type="TextureRect" parent="Hud/PlayerHealthUI/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("11_pnar6")
+stretch_mode = 2
 
 [node name="PlayerHurtEffect" type="Node2D" parent="."]
 

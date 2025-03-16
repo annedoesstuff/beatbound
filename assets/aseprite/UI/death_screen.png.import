@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df76m0nskfmk4"
-path="res://.godot/imported/hearts.png-139475c2a9cc8ae8bafc40d8d3c01cd7.ctex"
+uid="uid://bni44hwgnypmv"
+path="res://.godot/imported/death_screen.png-e3e75366af904fa3f408f00148041c8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite/UI/hearts.png"
-dest_files=["res://.godot/imported/hearts.png-139475c2a9cc8ae8bafc40d8d3c01cd7.ctex"]
+source_file="res://assets/aseprite/UI/death_screen.png"
+dest_files=["res://.godot/imported/death_screen.png-e3e75366af904fa3f408f00148041c8f.ctex"]
 
 [params]
 

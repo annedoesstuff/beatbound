@@ -22,8 +22,16 @@ func move():
 	ray_cast.force_raycast_update()
 	
 	if ray_cast.is_colliding():
-		print("attacking player")
-		return
+		
+		var mob = ray_cast.get_collider().owner # player or enemy
+		if mob and mob.is_in_group("player"):
+			print("attacking player")
+			mob.on_hit(damage)
+			stunned = true
+		elif mob and mob.is_in_group("enemy"):
+			print("found other enemy")
+		
+		return # return when player update moving when enemy
 		
 	# move slime
 	if tile_map.get_cell_tile_data(target_tile).get_custom_data("walkable") != false:

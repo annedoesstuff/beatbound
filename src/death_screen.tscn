@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://bn6546vs8vq6p"]
+
+[ext_resource type="FontFile" uid="uid://cpamhbkhuwxiy" path="res://assets/aseprite/UI/mago3.ttf" id="1_e3184"]
+[ext_resource type="Texture2D" uid="uid://b2kjrlilbsnfb" path="res://assets/aseprite/shadow_hurt.png" id="2_qjfjy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_aj2n8"]
+font = ExtResource("1_e3184")
+font_size = 64
+font_color = Color(0.878431, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruap7"]
+atlas = ExtResource("2_qjfjy")
+region = Rect2(0, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jyu0"]
+atlas = ExtResource("2_qjfjy")
+region = Rect2(34, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euuqe"]
+atlas = ExtResource("2_qjfjy")
+region = Rect2(68, 0, 34, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v25p2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruap7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jyu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euuqe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DeathScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 270.0
+color = Color(0.160784, 0.156863, 0.160784, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 73.0
+offset_right = 360.0
+offset_bottom = 124.0
+text = "Game Over"
+label_settings = SubResource("LabelSettings_aj2n8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(240, 183)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_v25p2")
+frame_progress = 0.944904

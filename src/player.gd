@@ -16,9 +16,10 @@ extends CharacterBody2D
 @onready var hurt_sound = $PlayerHurtEffect/HurtSound
 var player_hurt = false
 
-var max_health = 3
+var max_health = 4
 var health
 var is_alive = true
+@onready var health_ui = $Hud/PlayerHealthUI
 @export var can_move = true
 #var last_direction = Vector2.DOWN  # Default idle direction
 
@@ -28,8 +29,10 @@ func _ready() -> void:
 	beat_keeper.play()
 	treadmill.play("default")
 	health = max_health
+	health_ui.update_health(health, max_health)
 	player_sprite.play("idle_down")
 	add_to_group("player")
+	
 
 func _process(delta: float) -> void:
 	if !is_alive:
@@ -121,35 +124,41 @@ func attack(direction):
 	player_sprite.play("idle_down")
 
 ########### [HURT] ##########################
-#func on_hit(damage):
-	#if health <= 0 and is_alive:
-		#is_alive = false
-		#can_move = false
-		## play death sprite
-		## do a death screen / camera zoom
-		## exit the game
-	#
-	#if is_alive:
-		## stunn player for 1 beat
-		#hurt_collision.call_deferred("set_disabled", true)
-		#if !player_hurt:
-			#player_hurt = true
-			#hurt_timer.start()
-			#player_camera._cameraShake(10)
-			#hurt_sound.play()
-			#hurt_sprite.visible = true
-			#hurt_sprite.rotation = deg_to_rad(randf_range(-90, 90))
-			#hurt_sprite.play("default")
-			#play_hurt_flicker()
-	#
-#func play_hurt_flicker():
-	#hurt_tween = create_tween()
-	#hurt_tween.tween_property(player_sprite, "modulate", Color(1,1,1,0), 0.2)
-	#hurt_tween.tween_property(player_sprite, "modulate", Color(1,1,1,1), 0.2).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
-#
-#func _on_player_hurt_timer_timeout() -> void:
-	#hurt_tween.kill()
-	#hurt_sprite.visible = false
-	#hurt_sprite.frame = 0
-	#player_hurt = false
-	#hurt_collision.call_deferred("set_disabled", false)
+func on_hit(damage):
+	health -= damage
+	
+	if health <= 0 and is_alive:
+		is_alive = false
+		can_move = false
+		print("YOU DIED!")
+		# queue_free()
+		# play death sprite
+		# do a death screen / camera zoom
+		get_tree().change_scene_to_file("res://src/death_screen.tscn")  
+		# exit the game
+	
+	if is_alive:
+		health_ui.update_health(health, max_health)
+		# stunn player for 1 beat
+		hurt_collision.call_deferred("set_disabled", true)
+		if !player_hurt:
+			player_hurt = true
+			hurt_timer.start()
+			player_camera._cameraShake(10)
+			hurt_sound.play()
+			hurt_sprite.visible = true
+			hurt_sprite.rotation = deg_to_rad(randf_range(-90, 90))
+			hurt_sprite.play("default")
+			play_hurt_flicker()
+	
+func play_hurt_flicker():
+	hurt_tween = create_tween()
+	hurt_tween.tween_property(player_sprite, "modulate", Color(1,1,1,0), 0.2)
+	hurt_tween.tween_property(player_sprite, "modulate", Color(1,1,1,1), 0.2).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+
+func _on_player_hurt_timer_timeout() -> void:
+	hurt_tween.kill()
+	hurt_sprite.visible = false
+	hurt_sprite.frame = 0
+	player_hurt = false
+	hurt_collision.call_deferred("set_disabled", false)
