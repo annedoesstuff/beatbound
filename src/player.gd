@@ -130,6 +130,7 @@ func attack(direction):
 		## exit the game
 	#
 	#if is_alive:
+		## stunn player for 1 beat
 		#hurt_collision.call_deferred("set_disabled", true)
 		#if !player_hurt:
 			#player_hurt = true
