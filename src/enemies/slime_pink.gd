@@ -9,6 +9,10 @@ func _ready() -> void:
 
 func _on_beat_keeper_whole_beat(beat_number, exact_msec):
 	if beat_number % 3 == 0:  # Move every 3 beats
+		if stunned:
+			stunned = false
+			sprite.play()
+			return
 		move()
 
 func move():
