@@ -6,6 +6,8 @@
 
 [node name="enemy_hearts_ui" type="Control"]
 visible = false
+z_index = 3
+z_as_relative = false
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_2bcdh")

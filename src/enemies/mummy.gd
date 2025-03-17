@@ -14,7 +14,9 @@ func move():
 	
 	# if not walkable bounce off wall
 	if tile_data and tile_data.get_custom_data("walkable") == false:
-		bounce()  # Reverse direction when hitting a wall
+		bounce()  
+		ray_cast.target_position = direction * 32
+		ray_cast.force_raycast_update()
 		return
 	
 	ray_cast.target_position = direction * 32
@@ -49,11 +51,22 @@ func bounce():
 
 	# both blocked.. reverse both
 	if reverse_x and reverse_y:
-		direction *= -1
+		var can_move_x = tile_map.get_cell_tile_data(current_tile + Vector2i(direction.x, 0))
+		var can_move_y = tile_map.get_cell_tile_data(current_tile + Vector2i(0, direction.y))
+
+		# try moving only x or y
+		if can_move_x and can_move_x.get_custom_data("walkable") != false:
+			direction.y *= -1  
+		elif can_move_y and can_move_y.get_custom_data("walkable") != false:
+			direction.x *= -1  
+		else:
+			direction *= -1  
 	elif reverse_x:
 		direction.x *= -1
 		sprite.flip_h = !sprite.flip_h
 	elif reverse_y:
 		direction.y *= -1
+	
+	
 
 	
