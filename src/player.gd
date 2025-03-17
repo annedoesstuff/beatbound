@@ -16,6 +16,8 @@ extends CharacterBody2D
 @onready var hurt_sound = $PlayerHurtEffect/HurtSound
 var player_hurt = false
 
+var kill_counter = 0
+
 var max_health = 4
 var health
 var is_alive = true

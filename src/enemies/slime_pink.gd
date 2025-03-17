@@ -47,3 +47,4 @@ func move():
 	# move slime
 	if tile_map.get_cell_tile_data(target_tile).get_custom_data("walkable") != false:
 		global_position = tile_map.map_to_local(target_tile)
+		jump_effect()

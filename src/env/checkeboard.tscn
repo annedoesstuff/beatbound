@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf3bwn6e1uo3q"]
+
+[sub_resource type="Shader" id="Shader_fwyu0"]
+code = "shader_type canvas_item;
+
+uniform vec2 tile_size = vec2(32.0, 32.0); // grid size
+uniform float time_factor = 1.0;
+
+void fragment() {
+    vec2 uv_scaled = floor(UV * SCREEN_PIXEL_SIZE.xy / tile_size);
+    bool checker = mod(uv_scaled.x + uv_scaled.y + floor(TIME * time_factor), 2.0) == 0.0;
+    
+    vec4 dark_color = vec4(0.0, 0.0, 0.0, 0.3); // dark overlay
+    vec4 clear_color = vec4(0.0, 0.0, 0.0, 0.0); // transparent
+    
+    COLOR = checker ? dark_color : clear_color;
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pws77"]
+shader = SubResource("Shader_fwyu0")
+shader_parameter/tile_size = Vector2(32, 32)
+shader_parameter/time_factor = 1.0
+
+[node name="Checkeboard" type="Control"]
+custom_minimum_size = Vector2(480, 270)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_pws77")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

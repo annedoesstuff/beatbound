@@ -75,5 +75,11 @@ func explode():
 func get_health():
 	return current_health
 
+func jump_effect():
+	pass
+	#var jump_tween = create_tween()
+	#jump_tween.tween_property(self, "position:y", position.y - 4, 0.1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	#jump_tween.tween_property(self, "position:y", position.y, 0.1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+
 # func player collision():
 # 	player.take_damage(damage)

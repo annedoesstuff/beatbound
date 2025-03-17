@@ -35,6 +35,7 @@ func move():
 			
 	#move
 	global_position = tile_map.map_to_local(target_tile)
+	jump_effect()
 	
 func bounce():
 	var current_tile = tile_map.local_to_map(global_position)
