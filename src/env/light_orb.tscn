@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://dn4lbmt2e8nqb"]
+
+[ext_resource type="Texture2D" uid="uid://q5lhglhtsvm8" path="res://assets/light_and_particles/orb.png" id="1_un65i"]
+[ext_resource type="Texture2D" uid="uid://bv1hjb6kak2yd" path="res://assets/aseprite/FX/hud lantern light.png" id="2_blu4k"]
+[ext_resource type="Texture2D" uid="uid://d0ushxpyn8fv0" path="res://assets/aseprite/UI/torch.png" id="3_2mpup"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ts4w"]
+atlas = ExtResource("3_2mpup")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rafuf"]
+atlas = ExtResource("3_2mpup")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myypy"]
+atlas = ExtResource("3_2mpup")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8um0"]
+atlas = ExtResource("3_2mpup")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1r6r4"]
+atlas = ExtResource("3_2mpup")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6js0"]
+atlas = ExtResource("3_2mpup")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fww5p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ts4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rafuf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myypy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8um0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1r6r4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6js0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[node name="LightOrb" type="Node2D"]
+z_index = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_un65i")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1, -7)
+color = Color(0.956863, 0.635294, 0.380392, 1)
+energy = 1.1
+texture = ExtResource("2_blu4k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_fww5p")
+frame_progress = 0.309736

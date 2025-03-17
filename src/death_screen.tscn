@@ -1,7 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bn6546vs8vq6p"]
+[gd_scene load_steps=10 format=3 uid="uid://bn6546vs8vq6p"]
 
 [ext_resource type="FontFile" uid="uid://cpamhbkhuwxiy" path="res://assets/aseprite/UI/mago3.ttf" id="1_e3184"]
 [ext_resource type="Texture2D" uid="uid://b2kjrlilbsnfb" path="res://assets/aseprite/shadow_hurt.png" id="2_qjfjy"]
+[ext_resource type="Texture2D" uid="uid://doip1gyxvgbbr" path="res://assets/light_and_particles/lantern light 2.png" id="3_i1s3a"]
+
+[sub_resource type="Gradient" id="Gradient_qygvt"]
+offsets = PackedFloat32Array(0, 0.196, 0.971)
+colors = PackedColorArray(0.864701, 0.435984, 0.223084, 0, 0.905882, 0.435294, 0.317647, 0.796078, 1, 0.448054, 0.525968, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_aj2n8"]
 font = ExtResource("1_e3184")
@@ -47,6 +52,23 @@ offset_right = 480.0
 offset_bottom = 270.0
 color = Color(0.160784, 0.156863, 0.160784, 1)
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.147672, 0.147672, 0.147672, 1)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(287, 150)
+amount = 800
+lifetime = 4.0
+emission_shape = 3
+emission_rect_extents = Vector2(350, 400)
+direction = Vector2(1, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 25.0
+damping_min = 2.0
+damping_max = 5.0
+color_ramp = SubResource("Gradient_qygvt")
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 120.0
@@ -60,4 +82,17 @@ label_settings = SubResource("LabelSettings_aj2n8")
 position = Vector2(240, 183)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_v25p2")
-frame_progress = 0.944904
+frame = 2
+frame_progress = 0.117091
+
+[node name="PlayerLightSD" type="PointLight2D" parent="."]
+z_index = -1
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(238, 143)
+color = Color(0.942124, 0.817079, 0.914006, 1)
+energy = 1.1
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.52549)
+texture = ExtResource("3_i1s3a")
+texture_scale = 2.1

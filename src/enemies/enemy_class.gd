@@ -67,8 +67,8 @@ func explode():
 	death_explosion.global_transform = global_transform
 	
 	var tween = death_explosion.create_tween()
-	tween.tween_property(death_explosion, "scale", death_explosion.scale * 50, 1)
-	tween.tween_property(death_explosion, "modulate:a", 0.0, 1)
+	tween.tween_property(death_explosion, "scale", death_explosion.scale * 50, 0.7)
+	tween.tween_property(death_explosion, "modulate:a", 0.0, 0.8)
 	await tween.finished
 	death_explosion.queue_free()
 

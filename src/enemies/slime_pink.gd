@@ -1,6 +1,6 @@
 extends "res://src/enemies/enemy_class.gd"
 
-var direction = Vector2.LEFT
+var direction = Vector2.RIGHT
 
 func _ready() -> void:
 	max_health = 2
@@ -19,6 +19,7 @@ func move():
 	
 	if tile_data and tile_data.get_custom_data("walkable") == false:
 		direction *= -1 # reverse direction
+		sprite.flip_h = !sprite.flip_h
 		target_tile = current_tile + Vector2i(direction)
 	
 	# check for player / if attack
