@@ -151,6 +151,10 @@ func on_hit(damage):
 			hurt_sprite.rotation = deg_to_rad(randf_range(-90, 90))
 			hurt_sprite.play("default")
 			play_hurt_flicker()
+			player_sprite.play("hurt_down")
+			await player_sprite.animation_finished
+			player_sprite.play("idle_down")
+			
 	
 func play_hurt_flicker():
 	hurt_tween = create_tween()

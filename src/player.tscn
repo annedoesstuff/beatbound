@@ -1,7 +1,8 @@
-[gd_scene load_steps=117 format=3 uid="uid://coqfw6vh6r4lw"]
+[gd_scene load_steps=118 format=3 uid="uid://coqfw6vh6r4lw"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_toqu4"]
 [ext_resource type="Script" path="res://src/player_camera.gd" id="2_bn82w"]
+[ext_resource type="Texture2D" uid="uid://doip1gyxvgbbr" path="res://assets/light_and_particles/lantern light 2.png" id="3_2kjsu"]
 [ext_resource type="Texture2D" uid="uid://dtb2qokenhhjc" path="res://assets/aseprite/shadow_attack.png" id="3_sxpvd"]
 [ext_resource type="Texture2D" uid="uid://b2kjrlilbsnfb" path="res://assets/aseprite/shadow_hurt.png" id="4_36h7h"]
 [ext_resource type="Texture2D" uid="uid://c1cwr4eissgy" path="res://assets/aseprite/shadow_idle.png" id="5_5dvlw"]
@@ -379,7 +380,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vct80")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt_down",
 "speed": 3.0
 }, {
@@ -703,7 +704,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q5v1i"]
-size = Vector2(34.5455, 24.5454)
+size = Vector2(37.8572, 28.5714)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hfudt"]
 atlas = ExtResource("11_m7elu")
@@ -755,10 +756,14 @@ script = ExtResource("2_bn82w")
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_fv0hg")
 
+[node name="PlayerLight" type="PointLight2D" parent="."]
+texture = ExtResource("3_2kjsu")
+texture_scale = 1.3
+
 [node name="PlayerAnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_t6bbt")
-animation = &"attack_up"
+animation = &"hurt_down"
 
 [node name="Hud" type="CanvasLayer" parent="."]
 
@@ -778,7 +783,8 @@ script = ExtResource("9_mbt04")
 script = ExtResource("10_oaw40")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hud/Treadmill/OnBeat Area"]
-position = Vector2(0.909088, 5.90909)
+position = Vector2(1.0714, 6.42856)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_q5v1i")
 
 [node name="PlayerHealthUI" type="Control" parent="Hud"]
@@ -851,7 +857,7 @@ collide_with_bodies = false
 [node name="PlayerFlashEffect" type="Node2D" parent="."]
 
 [node name="PointLight2D" type="PointLight2D" parent="PlayerFlashEffect"]
-color = Color(0.8, 0, 0, 1)
+color = Color(1, 0.270588, 0, 1)
 energy = 0.0
 texture = ExtResource("16_or2h6")
 texture_scale = 3.0
