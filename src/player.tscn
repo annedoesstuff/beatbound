@@ -756,9 +756,15 @@ script = ExtResource("2_bn82w")
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_fv0hg")
 
-[node name="PlayerLight" type="PointLight2D" parent="."]
+[node name="PlayerLightSD" type="PointLight2D" parent="."]
+z_index = -1
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(0, -11)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.282353)
 texture = ExtResource("3_2kjsu")
-texture_scale = 1.3
+texture_scale = 1.56
 
 [node name="PlayerAnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7)
