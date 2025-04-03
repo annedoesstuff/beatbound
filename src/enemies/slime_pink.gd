@@ -3,8 +3,8 @@ extends "res://src/enemies/enemy_class.gd"
 var direction = Vector2.RIGHT
 
 func _ready() -> void:
-	max_health = 2
-	damage = 1
+	max_health = 1
+	damage = 2
 	super()
 
 func _on_beat_keeper_whole_beat(beat_number, exact_msec):
