@@ -7,8 +7,8 @@ Originally developed for a university course on Computer Graphics — received a
 
 #### How to Run
 1. Clone this repo
-2. Open `project.godot` in Godot 4.2+
-3. Press Play ▶
+2. Open in Godot 4.2+
+3. Press Play :)
 ---
 
 ## Table of Contents
