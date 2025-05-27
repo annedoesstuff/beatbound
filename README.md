@@ -5,8 +5,6 @@ Originally developed for a university course on Computer Graphics — received a
 
 > Move and attack **to the beat** in a grid-based dungeon! Timing is everything.
 
-![Gameplay Screenshot](./images/gameplay-preview.png) <!-- Replace with actual image path -->
-
 #### How to Run
 1. Clone this repo
 2. Open `project.godot` in Godot 4.2+
@@ -37,13 +35,9 @@ BeatBound captures this core loop in Godot, featuring beat-based input detection
 Designed mockups in Figma.  
 Created a 32×32 pixel tile system with depth (walls have a top & side), which was **hard to maintain** manually.
 
-![Tilemap Sketch](./images/tilemap-sketch.png)
-
 ### Problem
 - Top + side of walls are different sprites.
 - Manual tile placement was error-prone and didn't update when digging tiles.
-
-![Frustrating Manual Tiles](./images/problem-tiles.png)
 
 ### Solution: Terrain System
 Used **Godot's TileMap Terrain** to auto-place wall-top combinations based on a bitmask.
@@ -51,7 +45,9 @@ Used **Godot's TileMap Terrain** to auto-place wall-top combinations based on a 
 - Automatically updates when digging.
 - Paint-like workflow.
 
-![Terrain System Demo](./images/terrain-demo.png)
+![Screenshot 2024-12-04 113209](https://github.com/user-attachments/assets/e90384e5-a3ec-4f20-977a-dee6d9d97f69)
+![Screenshot 2025-03-17 222927](https://github.com/user-attachments/assets/916f8c95-907d-4348-a367-053c7bab59a3)
+
 
 ### Data Layers
 Added custom tile data:
@@ -59,8 +55,6 @@ Added custom tile data:
 - `diggable: bool`
 
 These are used in movement, pathfinding, and digging logic.
-
-![Data Layer Example](./images/data-layer.png)
 
 ### Logic Layer
 Implemented an invisible TileMap that represents logic — such as where walls or walkable tiles are — separate from the visual layer.
@@ -81,6 +75,8 @@ Provides a signal every full beat, based on the BPM of a given track.
 
 ### Treadmill System
 On each beat, spawn a `BeatNode` that travels across a lane — like a treadmill of beats.
+
+![Screenshot 2025-03-17 223637](https://github.com/user-attachments/assets/50060990-65e0-4633-8624-b9274f8846da)
 
 ```gdscript
 func _on_beat_keeper_whole_beat(number: Variant, exact_msec: Variant) -> void:
@@ -120,7 +116,10 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 
 ## 🧍 Entities & Combat
 ### Player
-- `AnimatedSprite2D` with idle, walk, and attack states.
+
+![Screenshot 2025-03-18 085734](https://github.com/user-attachments/assets/56641209-aa37-4796-a811-87fac5eeb8f6)
+
+- `AnimatedSprite2D` with idle, walk, hurt, and attack states.
 - Moves via raycasts.
 - Checks for `walkable` from tilemap data.
 - Attacks if enemy is detected.
@@ -144,6 +143,9 @@ func move(direction: Vector2):
 ```
 ### Enemies
 Base enemy class with overrideable movement/attack behavior.
+
+![Screenshot 2025-03-18 082624](https://github.com/user-attachments/assets/1ff5d575-bd3a-4b4d-a10c-0483574065b2)
+
 **Enemy Types:**
 - Blue Slime: 2 HP, moves up/down every beat.
 - Pink Slime: 1 HP, horizontal movement every 3rd beat, 2 damage.
@@ -155,9 +157,21 @@ Base enemy class with overrideable movement/attack behavior.
 - VFX for attacks, critical hits, and beat indicators.
 - CanvasModulate for global darkness.
 - Occlusion Layer for shadow-casting tiles.
+  
+  ![Screenshot 2025-03-17 122122](https://github.com/user-attachments/assets/112252a2-b9e0-4dab-9354-ffe0cf00194b)
+![Screenshot 2025-03-18 084607](https://github.com/user-attachments/assets/3498cc68-6181-4f7a-ac16-85d3f2270e21)
 - 2D Point Lights for torches & player light.
+  
+  ![Screenshot 2025-03-17 222628](https://github.com/user-attachments/assets/505940a5-3019-4b5b-8f59-b92b74018fe7)
 - CPUParticles2D for hits, movement trails, etc.
+  
+![Screenshot 2025-03-18 084259](https://github.com/user-attachments/assets/2377c8d0-a527-4ffe-af93-cb06ff48ae20)
+
 - Game Over screen, bones, holes, and cave props.
+
+![Screenshot 2025-03-18 085119](https://github.com/user-attachments/assets/2e006da8-c7aa-4aec-b109-43df1d60f038)
+![Screenshot 2025-03-18 085232](https://github.com/user-attachments/assets/e4f527e1-d908-4a47-a1b4-fdb022a05cb3)
+![Screenshot 2025-03-17 154626](https://github.com/user-attachments/assets/5745a169-3d2f-4d97-b9ed-de6b89ec30cf)
 
 ---
 
@@ -169,6 +183,9 @@ Used `Z-index` and `YSort` to layer elements:
 | 1       | Player/Enemies    |
 | 2       | Top Tiles         |
 | 3       | UI Elements       |
+
+![Screenshot 2025-03-18 083630](https://github.com/user-attachments/assets/74a3ae5e-bac6-4d98-aea1-3aa620786c23)
+
 
 
 
