@@ -29,7 +29,7 @@ BeatBound captures this core loop in Godot, featuring beat-based input detection
 
 ---
 
-## 🧱 Tilemap System
+## Tilemap System
 
 ### Initial Design
 Designed mockups in Figma.  
@@ -67,7 +67,7 @@ Visual layers:
 
 ---
 
-## 🕺 BeatKeeper Loop
+## BeatKeeper Loop
 
 ### Audio + BPM Sync
 Used [`ynot01/Godot-BeatKeeper`](https://github.com/ynot01/Godot-BeatKeeper).  
@@ -114,7 +114,7 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 
 ---
 
-## 🧍 Entities & Combat
+## Entities & Combat
 ### Player
 
 ![Screenshot 2025-03-18 085734](https://github.com/user-attachments/assets/56641209-aa37-4796-a811-87fac5eeb8f6)
@@ -153,7 +153,7 @@ Base enemy class with overrideable movement/attack behavior.
 
 ---
 
-### 🌌 Rendering & Visuals
+### Rendering & Visuals
 - VFX for attacks, critical hits, and beat indicators.
 - CanvasModulate for global darkness.
 - Occlusion Layer for shadow-casting tiles.
